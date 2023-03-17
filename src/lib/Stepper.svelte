@@ -1,11 +1,13 @@
 <script lang="ts">
-	// import { currentStep } from "../store";
+	import { currentStep } from "../store";
 	import StepButton from "./StepButton.svelte";
-	// currentStep.subscribe((value) => (localStep = value))
-	let localStep: number; 
-	
+
+	let localStep: number;  	
+	currentStep.subscribe((value) => (localStep = value))
+
 	function handleClick(newStep: number) {
-		localStep = newStep
+	 
+		currentStep.update(n => newStep)
 	}
  
 </script>
