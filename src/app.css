@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+.bg-contrast {
+	@apply bg-hero-contrast text-black dark:text-white min-h-screen bg-cover bg-no-repeat bg-fixed bg-center;
+}
+
+.normal {
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 	@apply bg-hero-light dark:bg-hero-dark text-black dark:text-white min-h-screen bg-cover bg-no-repeat bg-fixed bg-center;
 }
