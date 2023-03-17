@@ -8,26 +8,8 @@ export interface FetchResponse {
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-	let started;
-	// try {
-	// 	const response = await fetch(
-	// 		`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams({
-	// 			mode: 'bedtime',
-	// 			categories: 'derp'
-	// 		})}`,
-	// 		{
-	// 			mode: 'no-cors'
-	// 		}
-	// 	);
-
-	// 	return (await response.json()) as FetchResponse;
-	// } catch (error) {
-	// 	console.error(error);
-	// }
-
+	let started = false;
 	journeyStarted.subscribe((value) => (started = value));
-
-	console.log(started);
 
 	const returnValue = {
 		mode: 'bedtime',
@@ -36,7 +18,31 @@ export async function load({ fetch }) {
 		used_categories: 'derp,Walking Dead,Donald Duck'.split(',')
 	};
 
-	journey.update(() => returnValue);
+	const fn = started
+		? async () => {
+				// try {
+				// 	const response = await fetch(
+				// 		`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
+				// 			{
+				// 				mode: 'bedtime',
+				// 				categories: 'derp'
+				// 			}
+				// 		)}`,
+				// 		{
+				// 			mode: 'no-cors'
+				// 		}
+				// 	);
 
-	return returnValue;
+				// 	return (await response.json()) as FetchResponse;
+				// } catch (error) {
+				// 	console.error(error);
+				// }
+
+				journey.update(() => returnValue);
+		  }
+		: () => {
+				journey.update(() => returnValue);
+		  };
+
+	return await fn();
 }

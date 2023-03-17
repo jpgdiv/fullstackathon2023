@@ -8,6 +8,7 @@
 <Button
 	on:click={() => {
 		journeyStarted.update(() => true);
+
 		goto('/journey');
 	}}>Start journey</Button
 >
