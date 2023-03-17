@@ -11,10 +11,10 @@
 	});
 </script>
 
-<div>
+<section class="grid grid-cols-1 gap-4">
 	<TextContainer>Which of the franchises did you read about in the story?</TextContainer>
 
 	<Question {options} />
 
 	<Stepper />
-</div>
+</section>

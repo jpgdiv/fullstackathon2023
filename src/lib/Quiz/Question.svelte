@@ -5,10 +5,8 @@
 	export let options: string[];
 </script>
 
-<template>
-	<TextContainer>Which of the franchises did you read about in the story?</TextContainer>
-
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 	{#each options as option}
 		<Button>{option}</Button>
 	{/each}
-</template>
+</div>
