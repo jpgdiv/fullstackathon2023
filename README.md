@@ -13,6 +13,28 @@ The integration of AWS Lambda, Python and OpenAI is based on a proof of concept 
 
 There is no infrastructure as code; the AWS environment is set up by hand.
 
+## Installation
+
+### Backend
+
+Follow the steps described [here](https://thedeveloperspace.com/how-to-invoke-openai-apis-from-aws-lambda-functions/).
+
+The script `/backend/openai_get_api_key.py` is the same as in this article, and is installed in a separate Lambda in order to obtain the OpenAI get from the environment.
+
+The AWS Lambda function is created manually via the AWS console, and as described in the article, the [OpenAI Python library](https://platform.openai.com/docs/libraries/python-library) is added as a Layer so that the script in `/backend/generateBedtimeStory.py`, which contains our actual logic for which parameters we accept and how we turn them into a query that we send to OpenAI, can use for calling the OpenAI API.
+
+### Frontend
+
+Svelte is used to write HTML and TypeScript.
+
+Playwright is used to write e2e tests.
+
+Tailwind is used in combination with PostCSS to standardize CSS classes.
+
+Use Vite to build the frontend artifact for local development and creating production bundles.
+
+For production it additionally uses Rollup to compile, bundle and minify all the code into a folder with code that is manually zipped and uploaded into an AWS S3 bucket, that has been manually configured to function as a static webhost.
+
 ## API
 
 ### Sample request
