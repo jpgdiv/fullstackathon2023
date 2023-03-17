@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Form from '$lib/Form.svelte';
+	import Quiz from '$lib/Quiz/Quiz.svelte';
 </script>
 
-<Form />
+<Quiz />
