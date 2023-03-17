@@ -9,6 +9,7 @@ module.exports = {
 				'bts-light-gray': '#8F92A6',
 				'bts-brown': '#8C613B',
 				'bts-light-brown': '#BF9B8E',
+				'bts-dark-brown': '#552413',
 				'bts-black': '#0D0D0D'
 			}
 		}
