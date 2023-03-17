@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Button from '../Button/Button.svelte';
-	import TextContainer from '../Text/TextContainer.svelte';
 
 	export let options: string[];
 </script>
