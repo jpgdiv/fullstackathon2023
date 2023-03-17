@@ -17,7 +17,7 @@ export async function load({ fetch }) {
 		response:
 			'Once upon a time, there was a little creature named Derp. Derp was a curious creature who loved to explore the world around him.\n\nOne day, Derp decided to take a walk in the woods. As he was walking, he heard a strange noise coming from the trees. He looked up and saw a group of zombies from the Walking Dead TV show! Derp was so scared that he ran away as fast as he could.\n\nBut then, he heard a familiar voice calling out to him. It was Donald Duck! Donald was also scared of the zombies, but he was brave enough to stand up to them. He told Derp that he could help him get away from the zombies if he followed him.\n\nSo Derp followed Donald Duck through the woods, and eventually they made it to safety. Derp was so thankful to Donald for saving him, and they became good friends.\n\nFrom then on, Derp and Donald Duck went on many adventures together. They explored the world, and even faced off against the zombies from the Walking Dead.\n\nAnd they lived happily ever after.',
 		used_categories: 'derp,Walking Dead,Donald Duck'.split(','),
-		all_categories: 'derp,Walking Dead,Donald Duck'.split(',')
+		all_categories: 'marvel,dc,south park,family guy,bla,blabla,bark,barf,foo,bar'.split(',')
 	};
 
 	const fn = started

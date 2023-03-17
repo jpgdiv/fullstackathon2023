@@ -2,7 +2,9 @@
 	import { currentStep } from '../store';
 	import StepButton from './StepButton.svelte';
 
+	export let numQuestions: number = 0;
 	let localStep: number;
+
 	currentStep.subscribe((value) => (localStep = value));
 
 	function handleClick(newStep: number) {
@@ -11,28 +13,12 @@
 </script>
 
 <div class="mx-auto bg-bts-gray rounded-md p-2">
-	<StepButton
-		active={0 === localStep}
-		on:click={() => {
-			handleClick(0);
-		}}>1</StepButton
-	>
-	<StepButton
-		active={1 === localStep}
-		on:click={() => {
-			handleClick(1);
-		}}>2</StepButton
-	>
-	<StepButton
-		active={2 === localStep}
-		on:click={() => {
-			handleClick(2);
-		}}>3</StepButton
-	>
-	<StepButton
-		active={3 === localStep}
-		on:click={() => {
-			handleClick(3);
-		}}>4</StepButton
-	>
+	{#each Array(numQuestions) as _, i}
+		<StepButton
+			active={i === localStep}
+			on:click={() => {
+				handleClick(i);
+			}}>{i + 1}</StepButton
+		>
+	{/each}
 </div>

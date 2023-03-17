@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '../Button/Button.svelte';
 
-	export let options: string[];
+	export let question: [string, string[]];
 
 	const gif =
 		'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODM4ZDNhZjUxZjc2MzczYjU4N2I5NjEzMTc2MDZjNmUwZTg0OWJjMiZjdD1n/tyttpHipQaMgU7fm968/giphy.gif';
@@ -14,11 +14,11 @@
 
 <div class="grid grid-cols-1">
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each options as option}
+		{#each question[1] as option}
 			<Button
 				on:click={() => {
 					optionSelected = true;
-					// isCorrect = true;
+					isCorrect = option === question[0];
 				}}>{option}</Button
 			>
 		{/each}
