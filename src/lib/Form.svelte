@@ -1,13 +1,11 @@
 <script lang="ts">
-	const submitHandler = function (e: SubmitEvent) {
-		e.preventDefault();
-
+	function submitHandler(e: SubmitEvent) {
 		const formData = new FormData(e.target as HTMLFormElement);
 
 		console.log({ formData });
-	};
+	}
 </script>
 
-<form on:submit={submitHandler}>
+<form on:submit|preventDefault={submitHandler}>
 	<button type="submit">submit</button>
 </form>
