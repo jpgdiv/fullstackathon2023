@@ -15,8 +15,8 @@ module.exports = {
 			backgroundImage: {
 				'hero-light': "url('/hero-light.jpg')",
 				'hero-dark': "url('/hero-dark.jpg')",
-				'hero-contrast': "url('/hero-contrast.jpg')",
-			  }
+				'hero-contrast': "url('/hero-contrast.jpg')"
+			}
 		}
 	},
 	plugins: [require('@tailwindcss/typography')]

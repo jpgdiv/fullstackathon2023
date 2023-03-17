@@ -13,16 +13,11 @@
 			: document.documentElement.classList.remove('dark');
 	}
 
-	if (browser) {
-		if (
-			localStorage.theme === 'dark' ||
-			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-		) {
-			darkMode = true;
-		} else {
-			darkMode = false;
-		}
-	}
+	browser
+		? (darkMode =
+				localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+		: undefined;
 </script>
 
 <label>

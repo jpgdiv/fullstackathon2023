@@ -6,17 +6,21 @@
 		<meta name="viewport" content="width=device-width" />
 
 		<script>
-			// Tailwind dark mode init
-			if (
-				localStorage.theme === 'dark' ||
-				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-			) {
+			const setDark = () => {
 				document.documentElement.classList.add('dark');
 				localStorage.setItem('theme', 'dark');
-			} else {
+			};
+
+			const unsetDark = () => {
 				document.documentElement.classList.remove('dark');
 				localStorage.setItem('theme', 'light');
-			}
+			};
+
+			// Tailwind dark mode init
+			const useDarkmode =
+				localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+			useDarkmode ? setDark() : unsetDark();
 		</script>
 
 		%sveltekit.head%
