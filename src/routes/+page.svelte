@@ -5,7 +5,7 @@
 
 <section>
 	<TextContainer>
-		<p>
+		<article>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pulvinar magna nisi, vitae
 			ornare quam interdum in. Nunc finibus tristique ex, ut mollis sapien. Nullam rhoncus varius
 			tortor vel sodales. Nullam lacinia pharetra purus quis efficitur. Sed id nisi sapien. Nam quis
@@ -38,7 +38,7 @@
 			quam eget massa rutrum fringilla a a arcu. Donec nunc mauris, scelerisque eget nisi at,
 			scelerisque accumsan neque. Quisque vitae blandit nunc. Sed vel mollis ligula. Aenean eu
 			sagittis ipsum. Proin leo augue, sagittis ac felis sit amet, elementum tristique mauris.
-		</p>
+		</article>
 	</TextContainer>
 	<StartButton />
 </section>
