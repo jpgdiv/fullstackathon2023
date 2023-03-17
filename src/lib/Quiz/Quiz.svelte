@@ -20,7 +20,12 @@
 <section class="grid grid-cols-1 gap-4">
 	<TextContainer>Which of the franchises did you read about in the story?</TextContainer>
 
-	<Question {question} />
+	<Question
+		{question}
+		onCorrect={() => {
+			currentStep.update((n) => (n + 1 < Object.keys(questions).length ? n + 1 : n));
+		}}
+	/>
 
 	<Stepper numQuestions={Object.keys(questions).length} />
 </section>

@@ -2,6 +2,7 @@
 	import Button from '../Button/Button.svelte';
 
 	export let question: [string, string[]];
+	export let onCorrect: () => void;
 
 	const gif =
 		'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODM4ZDNhZjUxZjc2MzczYjU4N2I5NjEzMTc2MDZjNmUwZTg0OWJjMiZjdD1n/tyttpHipQaMgU7fm968/giphy.gif';
@@ -19,6 +20,7 @@
 				on:click={() => {
 					optionSelected = true;
 					isCorrect = option === question[0];
+					isCorrect ? onCorrect() : undefined;
 				}}>{option}</Button
 			>
 		{/each}
