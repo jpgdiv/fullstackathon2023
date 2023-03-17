@@ -2,7 +2,7 @@
 	import Button from '../Button/Button.svelte';
 	import TextContainer from '../Text/TextContainer.svelte';
 
-	let options: string[];
+	export let options: string[];
 </script>
 
 <template>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import Button from '$lib/Button/Button.svelte';
 	import TextContainer from '$lib/Text/TextContainer.svelte';
 	import { journey } from '../../store';
 	import type { FetchResponse } from './+page';
@@ -16,4 +18,6 @@
 			{value.response}
 		</article>
 	</TextContainer>
+
+	<Button on:click={() => goto('/journey/quiz')}>next</Button>
 </section>
