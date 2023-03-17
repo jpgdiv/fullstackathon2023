@@ -3,8 +3,10 @@
 	import AppTitle from './AppTitle.svelte';
 </script>
 
-<header>
+<header class="grid grid-cols-2 gap-4">
 	<AppTitle />
 
-	<ThemeSwitch />
+	<div class="justify-self-end">
+		<ThemeSwitch />
+	</div>
 </header>
