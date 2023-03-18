@@ -22,31 +22,29 @@ export async function load({ fetch }) {
 
 	const fn = started
 		? async () => {
-				// try {
-				// 	const response = await fetch(
-				// 		`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
-				// 			{
-				// 				mode: 'bedtime',
-				// 				categories: 'derp'
-				// 			}
-				// 		)}`,
-				// 		{
-				// 			headers: {
-				// 				'Content-Type': 'application/json'
-				// 			}
-				// 		}
-				// 	);
+			try {
+				const response = await fetch(
+					`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
+						{
+							mode: 'bedtime',
+							categories: 'derp'
+						}
+					)}`,
 
-				// 	return (await response.json()) as FetchResponse;
-				// } catch (error) {
-				// 	console.error(error);
-				// }
+				);
 
-				journey.update(() => returnValue);
-		  }
+				// console.log(response)
+
+				return (await response.json()) as FetchResponse;
+			} catch (error) {
+				console.error(error);
+			}
+
+			// journey.update(() => returnValue);
+		}
 		: async () => {
-				journey.update(() => returnValue);
-		  };
+			journey.update(() => returnValue);
+		};
 
 	return await fn();
 }

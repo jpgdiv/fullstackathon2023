@@ -13,7 +13,7 @@
 	function handleSwitchDarkMode() {
 		darkMode = !darkMode;
 
-		themeToggleCounter.update((c) => c++);
+		themeToggleCounter.update((c) => c + 1);
 
 		const fn =
 			localCounter > 3

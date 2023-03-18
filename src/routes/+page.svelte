@@ -1,6 +1,12 @@
 <script lang="ts">
 	import StartButton from '$lib/Button/StartButton.svelte';
+	import InputTheme from '$lib/InputTheme.svelte';
 	import TextContainer from '$lib/Text/TextContainer.svelte';
+
+	import {themeToggleCounter} from '../store'
+
+	let localStep: number;
+	themeToggleCounter.subscribe((val) => {localStep = val})
 </script>
 
 <section class="grid grid-cols-1 gap-4">
@@ -26,5 +32,6 @@
 
 	<div>
 		<StartButton />
+		<InputTheme active={localStep > 3} />
 	</div>
 </section>
