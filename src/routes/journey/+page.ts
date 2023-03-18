@@ -1,4 +1,4 @@
-import { journey, journeyStarted } from '../../store';
+import { journey, journeyStarted, themeInput } from '../../store';
 
 export interface FetchResponse {
 	mode: string;
@@ -6,11 +6,19 @@ export interface FetchResponse {
 	used_categories: string;
 	all_categories: string;
 }
+export interface TransformedFetchResponse {
+	mode: string;
+	response: string;
+	used_categories: string[];
+	all_categories: string[];
+}
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
 	let started = false;
+	let localThemeInput = "";
 	journeyStarted.subscribe((value) => (started = value));
+	themeInput.subscribe((value) => { localThemeInput = value });
 
 	const returnValue: any = {
 		mode: 'bedtime',
@@ -25,33 +33,33 @@ export async function load({ fetch }) {
 
 	const fn = started
 		? async () => {
-				try {
-					const response = await fetch(
-						`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
-							{
-								mode: 'bedtime',
-								categories: 'derp'
-							}
-						)}`
-					);
+			try {
+				const response = await fetch(
+					`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
+						{
+							mode: 'bedtime',
+							categories: localThemeInput
+						}
+					)}`
+				);
 
-					const responseObject = (await response.json()) as FetchResponse;
+				const responseObject = (await response.json()) as FetchResponse;
 
-					return {
-						mode: responseObject.mode,
-						response: responseObject.response,
-						used_categories: responseObject.used_categories.split(','),
-						all_categories: responseObject.all_categories.split(',')
-					};
-				} catch (error) {
-					console.error(error);
-				}
+				return {
+					mode: responseObject.mode,
+					response: responseObject.response,
+					used_categories: responseObject.used_categories.split(','),
+					all_categories: responseObject.all_categories.split(',')
+				};
+			} catch (error) {
+				console.error(error);
+			}
 
-				journey.update(() => returnValue);
-		  }
+			journey.update(() => returnValue);
+		}
 		: async () => {
-				journey.update(() => returnValue);
-		  };
+			journey.update(() => returnValue);
+		};
 
 	return await fn();
 }

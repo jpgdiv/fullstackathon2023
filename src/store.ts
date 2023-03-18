@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
-import type { FetchResponse } from './routes/journey/+page';
+import type { TransformedFetchResponse } from './routes/journey/+page';
 
-export const journey = writable<FetchResponse | undefined>();
+export const journey = writable<TransformedFetchResponse | undefined>();
 
 export const journeyStarted = writable<boolean>(false);
 
