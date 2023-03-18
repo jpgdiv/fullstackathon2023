@@ -36,7 +36,13 @@ d = [
 def lambda_handler(event, context):
     
     ma = event['queryStringParameters']['mode']
-    pc = event['queryStringParameters']['categories']
+
+    try:
+        pc = event['queryStringParameters']['categories']
+    except KeyError as nullPointerException:
+        print("NullPointerException: ", nullPointerException)
+        pc = ''
+
     c = xcb(pc);
     mu = "text-davinci-003"
     ip="Write a " + ma + " story, set in a universe based on several given franchises. The story should not contain any of the words of these franchise titles, but do use characters, places and items from the franchises. The story is long and contains many details. The story mentions at least one character, place and item from each franchise.  Franchises:" + c
