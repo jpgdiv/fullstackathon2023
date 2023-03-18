@@ -51,7 +51,6 @@ export async function load({ fetch }) {
 			console.error(error);
 		}
 	};
-
 	try {
 		const rawr = await fetch('https://chronicles-of-chatland.vercel.app/api/rawr');
 		console.log(rawr);
