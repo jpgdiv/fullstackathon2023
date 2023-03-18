@@ -19,9 +19,11 @@ export async function load({ fetch }) {
 	themeInput.subscribe((value) => {
 		localThemeInput = value;
 	});
-	let localCurrentMode = "bedtime";
+	let localCurrentMode = 'bedtime';
 
-	currentTheme.subscribe((value) => { localCurrentMode = value });
+	currentTheme.subscribe((value) => {
+		localCurrentMode = value;
+	});
 
 	const fn = async () => {
 		try {
@@ -49,7 +51,7 @@ export async function load({ fetch }) {
 
 	try {
 		const rawr = await fetch('https://chronicles-of-chatland.vercel.app/api/rawr');
-		console.log(await rawr.json());
+		console.log(rawr);
 	} catch (error) {
 		console.error(error);
 	}
