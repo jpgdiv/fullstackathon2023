@@ -1,4 +1,4 @@
-import { journey, journeyStarted, themeInput, currentTheme } from '../../store';
+import { journey, themeInput, currentTheme, loadingState } from '../../store';
 
 export interface FetchResponse {
 	mode: string;
@@ -27,6 +27,8 @@ export async function load({ fetch }) {
 
 	const fn = async () => {
 		try {
+
+			loadingState.update(() => true);
 			const response = await fetch(
 				`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
 					{
@@ -37,6 +39,7 @@ export async function load({ fetch }) {
 			);
 
 			const responseObject = (await response.json()) as FetchResponse;
+			loadingState.update(() => false);
 
 			journey.update(() => ({
 				mode: responseObject.mode,

@@ -4,6 +4,7 @@ import type { TransformedFetchResponse } from './routes/journey/+page';
 export const journey = writable<TransformedFetchResponse | undefined>();
 
 export const journeyStarted = writable<boolean>(false);
+export const loadingState = writable<boolean>(false);
 
 export const currentStep = writable<number>(0);
 export const themeInput = writable<string>('');
