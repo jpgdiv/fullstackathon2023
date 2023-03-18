@@ -31,7 +31,9 @@ export async function load({ fetch }) {
 				// 			}
 				// 		)}`,
 				// 		{
-				// 			mode: 'no-cors'
+				// 			headers: {
+				// 				'Content-Type': 'application/json'
+				// 			}
 				// 		}
 				// 	);
 
@@ -42,7 +44,7 @@ export async function load({ fetch }) {
 
 				journey.update(() => returnValue);
 		  }
-		: () => {
+		: async () => {
 				journey.update(() => returnValue);
 		  };
 
