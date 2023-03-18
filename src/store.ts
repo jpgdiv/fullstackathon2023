@@ -6,3 +6,5 @@ export const journey = writable<FetchResponse>();
 export const journeyStarted = writable<boolean>(false);
 
 export const currentStep = writable<number>(0);
+export const themeToggleCounter = writable<number>(0);
+
