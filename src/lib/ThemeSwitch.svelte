@@ -15,13 +15,18 @@
 
 		themeToggleCounter.update((c) => c++);
 
-		if (localCounter > 3) {
-			const body = document.getElementsByTagName('body');
-			const main = document.getElementsByTagName('main');
-			body[0].classList.remove('normal');
-			main[0].classList.add('invert');
-			body[0].classList.add('backdrop-invert');
-		}
+		const fn =
+			localCounter > 3
+				? () => {
+						const body = document.getElementsByTagName('body');
+						const main = document.getElementsByTagName('main');
+						body[0].classList.remove('normal');
+						main[0].classList.add('invert');
+						body[0].classList.add('backdrop-invert');
+				  }
+				: undefined;
+
+		fn?.();
 
 		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
 
