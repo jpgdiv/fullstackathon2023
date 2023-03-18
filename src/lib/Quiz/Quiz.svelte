@@ -10,7 +10,7 @@
 	let question: [string, string[]];
 
 	journey.subscribe((v) => {
-		questions = getQuestions(v.all_categories, v.used_categories);
+		questions = v ? getQuestions(v.all_categories, v.used_categories) : {};
 	});
 
 	currentStep.subscribe((v) => {

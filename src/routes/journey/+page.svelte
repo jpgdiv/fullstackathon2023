@@ -5,7 +5,7 @@
 	import { journey } from '../../store';
 	import type { FetchResponse } from './+page';
 
-	let value: FetchResponse;
+	let value: FetchResponse | undefined;
 
 	journey.subscribe((v) => {
 		value = v;
@@ -15,7 +15,7 @@
 <section class="grid grid-cols-1 gap-4">
 	<TextContainer>
 		<article>
-			{value.response}
+			{value?.response}
 		</article>
 	</TextContainer>
 

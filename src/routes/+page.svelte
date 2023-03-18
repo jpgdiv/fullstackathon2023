@@ -3,10 +3,14 @@
 	import InputTheme from '$lib/InputTheme.svelte';
 	import TextContainer from '$lib/Text/TextContainer.svelte';
 
-	import {themeToggleCounter} from '../store'
+	import { journeyStarted, reset, themeToggleCounter } from '../store';
 
 	let localStep: number;
-	themeToggleCounter.subscribe((val) => {localStep = val})
+	themeToggleCounter.subscribe((val) => {
+		localStep = val;
+	});
+
+	journeyStarted ? reset() : undefined;
 </script>
 
 <section class="grid grid-cols-1 gap-4">
