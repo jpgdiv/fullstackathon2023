@@ -13,9 +13,7 @@ module.exports = {
 				'bts-black': '#0D0D0D'
 			},
 			backgroundImage: {
-				'hero-light': "url('/hero-light.jpg')",
-				'hero-dark': "url('/hero-dark.jpg')",
-				'hero-contrast': "url('/hero-contrast.jpg')"
+				'hero-dark': "url('/hero-dark.jpg')"
 			}
 		}
 	},

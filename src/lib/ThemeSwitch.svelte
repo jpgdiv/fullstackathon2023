@@ -4,21 +4,23 @@
 
 	let darkMode = true;
 
-
 	let localCounter = 0;
 
-	themeToggleCounter.subscribe(value => {localCounter = value})
+	themeToggleCounter.subscribe((value) => {
+		localCounter = value;
+	});
 
 	function handleSwitchDarkMode() {
 		darkMode = !darkMode;
 
-		themeToggleCounter.update(c => c++)
+		themeToggleCounter.update((c) => c++);
 
-		if(localCounter > 3) {
+		if (localCounter > 3) {
 			const body = document.getElementsByTagName('body');
-			body[0].classList.remove("normal")
-			body[0].classList.add("invert")
-			body[0].classList.add("bg-contrast")
+			const main = document.getElementsByTagName('main');
+			body[0].classList.remove('normal');
+			main[0].classList.add('invert');
+			body[0].classList.add('backdrop-invert');
 		}
 
 		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
