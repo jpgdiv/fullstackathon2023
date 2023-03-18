@@ -4,5 +4,5 @@
 
 body {
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	@apply backdrop-brightness-100 dark:backdrop-brightness-75 bg-hero-dark text-black dark:text-white min-h-screen bg-cover bg-no-repeat bg-fixed bg-center;
+	@apply backdrop-brightness-200 dark:backdrop-brightness-75 bg-hero-dark text-black dark:text-white min-h-screen bg-cover bg-no-repeat bg-fixed bg-center;
 }
