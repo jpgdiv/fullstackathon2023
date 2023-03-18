@@ -4,7 +4,7 @@ import boto3
 import random
 
 
-default_categories = [
+d = [
 'Harry Potter',
 'The Witcher',
 'Lord of the Rings / The Hobbit',
@@ -35,52 +35,50 @@ default_categories = [
 
 def lambda_handler(event, context):
     
-    print('event:', json.dumps(event))
-    print('queryStringParameters:', json.dumps(event['queryStringParameters']))
+    ma = event['queryStringParameters']['mode']
+    pc = event['queryStringParameters']['categories']
+    c = xcb(pc);
+    mu = "text-davinci-003"
+    ip="Write a " + ma + " story, set in a universe based on several given franchises. The story should not contain any of the words of these franchise titles, but do use characters, places and items from the franchises. The story is long and contains many details. The story mentions at least one character, place and item from each franchise.  Franchises:" + c
 
-    mode = event['queryStringParameters']['mode']
-    provided_categories = event['queryStringParameters']['categories']
-    
-    categories = get_categories_b(provided_categories);
-
-    model_to_use = "text-davinci-003"
-    input_prompt="Write a " + mode + " story about " + categories
-
-    openai.api_key = get_api_key()
-    response = openai.Completion.create(
-      model=model_to_use,
-      prompt=input_prompt,
-      temperature=0,
-      max_tokens=1000,
+    openai.api_key = go()
+    r = openai.Completion.create(
+      model=mu,
+      prompt=ip,
+      temperature=0.7,
+      max_tokens=3000,
       top_p=1,
       frequency_penalty=0.0,
       presence_penalty=0.0
     )
-    #print(response)
-    text_response = response['choices'][0]['text'].strip()
+    tr = r['choices'][0]['text'].strip()
     return {
         'statusCode':200,
         'body': {
-            'response' : text_response,
-            'used_categories' : categories,
-            'mode' : mode
+            'response' : tr,
+            'used_categories' : c,
+            'all_categories' : xca(pc),
+            'mode' : ma
         }
     }
     
-def get_api_key():
-    lambda_client = boto3.client('lambda')
-    response = lambda_client.invoke(
+def go():
+    lc = boto3.client('lambda')
+    z = lc.invoke(
             FunctionName = 'arn:aws:lambda:eu-west-1:148267025593:function:openai_get_api_key',
             InvocationType = 'RequestResponse'
         )
+    aka = json.load(z['Payload'])['body']['api_key']
+    return aka
 
-    openai_api_key = json.load(response['Payload'])['body']['api_key']
-    return openai_api_key
-
-
-def get_categories(number_of_categories):
-    return ','.join(random.sample(default_categories, number_of_categories));
+def xc(n):
+    return ','.join(random.sample(d, n));
     
-def get_categories_b(provided_categories):
-    provided_count = min(len(provided_categories), len(provided_categories) ** 0) + provided_categories.count(",")
-    return provided_categories + "," + get_categories(max(3-provided_count, 1))
+def xcb(pc):
+    co = min(len(pc), len(pc) ** 0) + pc.count(",")
+    ax = pc + "," + xc(max(3-co, 1))
+    return ax.removeprefix(',')
+        
+def xca(pc):
+    bx = pc + "," + ','.join(d)
+    return bx.removeprefix(',')
