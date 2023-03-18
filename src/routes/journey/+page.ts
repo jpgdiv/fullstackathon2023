@@ -1,4 +1,4 @@
-import { journey, journeyStarted, themeInput } from '../../store';
+import { journey, journeyStarted, themeInput, currentTheme } from '../../store';
 
 export interface FetchResponse {
 	mode: string;
@@ -19,13 +19,16 @@ export async function load({ fetch }) {
 	themeInput.subscribe((value) => {
 		localThemeInput = value;
 	});
+	let localCurrentMode = "bedtime";
+
+	currentTheme.subscribe((value) => { localCurrentMode = value });
 
 	const fn = async () => {
 		try {
 			const response = await fetch(
 				`https://smgqwfugc5djocgcfoddnspwa40qpxbt.lambda-url.eu-west-1.on.aws/?${new URLSearchParams(
 					{
-						mode: 'bedtime',
+						mode: localCurrentMode,
 						categories: localThemeInput
 					}
 				)}`

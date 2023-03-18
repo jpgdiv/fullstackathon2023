@@ -7,6 +7,7 @@ export const journeyStarted = writable<boolean>(false);
 
 export const currentStep = writable<number>(0);
 export const themeInput = writable<string>('');
+export const currentTheme = writable<string>('');
 export const themeToggleCounter = writable<number>(0);
 
 export function reset() {

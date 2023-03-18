@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { themeToggleCounter } from '../store';
+	import { currentTheme, themeToggleCounter } from '../store';
 
 	let darkMode = true;
 
@@ -14,6 +14,7 @@
 		darkMode = !darkMode;
 
 		themeToggleCounter.update((c) => c + 1);
+		currentTheme.update(() =>  darkMode ? 'dark' : 'bedtime');
 
 		const fn =
 			localCounter > 3
