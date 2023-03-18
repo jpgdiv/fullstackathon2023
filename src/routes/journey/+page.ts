@@ -45,17 +45,17 @@ export async function load({ fetch }) {
 
 				const responseObject = (await response.json()) as FetchResponse;
 
-				return {
+
+				journey.update(() => ({
 					mode: responseObject.mode,
 					response: responseObject.response,
 					used_categories: responseObject.used_categories.split(','),
 					all_categories: responseObject.all_categories.split(',')
-				};
+				}));
 			} catch (error) {
 				console.error(error);
 			}
 
-			journey.update(() => returnValue);
 		}
 		: async () => {
 			journey.update(() => returnValue);
