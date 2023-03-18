@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Stepper from '$lib/Stepper.svelte';
 	import TextContainer from '$lib/Text/TextContainer.svelte';
 	import { currentStep, journey } from '../../store';
@@ -13,7 +14,9 @@
 	});
 
 	currentStep.subscribe((v) => {
-		question = Object.entries(questions)[v];
+		v === Object.keys(questions).length
+			? goto('/journey/quiz/finish')
+			: (question = Object.entries(questions)[v]);
 	});
 </script>
 
@@ -23,7 +26,7 @@
 	<Question
 		{question}
 		onCorrect={() => {
-			currentStep.update((n) => (n + 1 < Object.keys(questions).length ? n + 1 : n));
+			currentStep.update((n) => n + 1);
 		}}
 	/>
 
